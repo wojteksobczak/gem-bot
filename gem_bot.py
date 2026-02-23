@@ -4,7 +4,7 @@ import os
 import requests
 
 tickers = [
-    "CSNDX.L",   # Nasdaq 100
+    "CNDX.L",   # Nasdaq 100
     "EIMI.L",    # MSCI EM IMI
     "IWDA.AS"    # MSCI World
 ]
