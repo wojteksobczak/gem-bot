@@ -11,11 +11,14 @@ one_month_ago = today - datetime.timedelta(days=30)
 twelve_months_ago = today - datetime.timedelta(days=365)
 
 def get_momentum(ticker):
-    data = yf.download(ticker, start=twelve_months_ago, end=one_month_ago)
-    if len(data) < 2:
+    data = yf.download(ticker, start=twelve_months_ago, end=one_month_ago, auto_adjust=True)
+
+    if data.empty or len(data) < 2:
         return None
-    start_price = data["Adj Close"].iloc[0]
-    end_price = data["Adj Close"].iloc[-1]
+
+    start_price = data["Close"].iloc[0]
+    end_price = data["Close"].iloc[-1]
+
     return (end_price / start_price) - 1
 
 results = {}
